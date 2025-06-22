@@ -11,6 +11,7 @@ GO = go
 RUSTC = rustc
 CC = gcc
 CFLAGS = -std=c11
+ZIG = zig
 
 # Directories
 ROOT_DIR := $(shell pwd)
@@ -23,6 +24,7 @@ ST_DIR := com/example/truthmoji
 GO_DIR := com/example/truthmoji
 RUST_DIR := com/example/truthmoji
 C_DIR := com/example/truthmoji
+ZIG_DIR := com/example/truthmoji
 
 # Default target
 .PHONY: all
@@ -112,9 +114,15 @@ run-c:
 	@echo "Running C implementation..."
 	cd $(C_DIR) && $(CC) $(CFLAGS) truthmoji.c -o truthmoji_c && ./truthmoji_c && rm -f truthmoji_c
 
+# Run Zig implementation
+.PHONY: run-zig
+run-zig:
+	@echo "Running Zig implementation..."
+	cd $(ZIG_DIR) && $(ZIG) build-exe truthmoji.zig && ./truthmoji && rm -f truthmoji
+
 # Run all implementations
 .PHONY: run-all
-run-all: run-js run-py run-hy run-el run-scm run-clj run-st run-go run-rust run-c
+run-all: run-js run-py run-hy run-el run-scm run-clj run-st run-go run-rust run-c run-zig
 
 # Check language versions
 .PHONY: check-langs
@@ -130,6 +138,7 @@ check-langs:
 	@echo "Go: $$($(GO) version)"
 	@echo "Rust: $$($(RUSTC) --version)"
 	@echo "C: $$($(CC) --version | head -n 1)"
+	@echo "Zig: $$($(ZIG) version)"
 
 # Clean up generated files
 .PHONY: clean
