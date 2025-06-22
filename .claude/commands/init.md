@@ -1,77 +1,101 @@
-# Scope Safari: Cross-Language Environment Exploration
+# Session Initialization Instructions
 
-## Project Overview
-This project implements a simple boolean-to-emoji converter across multiple programming languages to compare scope, environment, and closure implementations.
+When starting a new session with Scope Safari, please perform these steps:
 
-## Core Functionality
-- Each implementation converts booleans to emoji:
-  - `true` → "😊"
-  - `false` → "😔"
-- Each implementation tracks usage count in a closure
-- Each implementation demonstrates environment inspection
+## 1. Check GitHub Issues
 
-## Implemented Languages
-- JavaScript/Node.js
-- Python
-- Hy (Lisp syntax for Python)
-- Elisp (Emacs Lisp)
-- Guile Scheme
-- Clojure
+Always check GitHub issues to identify open tasks and priorities:
 
-## Repository Structure
-```
-scope-safari/
-├── com/
-│   └── example/
-│       └── truthmoji/
-│           ├── index.js      # JavaScript implementation
-│           ├── index.ts      # TypeScript implementation
-│           ├── __init__.py   # Python implementation
-│           ├── truthmoji.hy  # Hy implementation
-│           ├── truthmoji.el  # Elisp implementation
-│           └── truthmoji.scm # Guile Scheme implementation
-├── Makefile               # Build and run commands
-└── README.org             # Project documentation
-```
-
-## Working with This Repository
-
-### Environment Setup
 ```bash
-# Create and activate Python virtual environment
-uv venv
-source .venv/bin/activate
+gh issue list
 ```
 
-### Running Implementations
+Focus on issues with higher priority labels and those recently updated.
+
+## 2. Review Git History
+
+Check the commit history to understand recent work and find trailer notes from previous sessions:
+
 ```bash
-# Run all implementations
-make run-all
-
-# Run individual implementations
-make run-js
-make run-py
-make run-hy
-make run-el
-make run-scm
-make run-clj
+git log --pretty=full
 ```
 
-### Commit Guidelines
-- Use conventional commits format (`type(scope): message`)
-- Use --trailer for co-author attribution
-- Do NOT include "generated with" in commit messages
-- Keep commits focused on single concerns
+Look for commits with `--trailer` notes containing:
+- Co-Author information
+- Task information
+- Notes for future sessions
+- TODO items
 
-## Next Steps & Potential Improvements
-- Add unit tests for each language implementation
-- Create Docker containers for consistent environments
-- Add more advanced scope examples (currying, partial application)
-- Add web UI examples to compare implementations
-- Add comparison matrix of scope and environment features
+## 3. Use Trailers for Commits
 
-## Notes for LLMs/Agents
-- FreeBSD 14.2 is the primary development platform
-- Access to all required language implementations is verified
-- Python uses uv for environment management
-- All implementations use the same simple boolean-to-emoji conversion API
+When committing changes, always use trailers for:
+
+- Co-authorship attribution
+  ```
+  Co-Authored-By: Claude <noreply@anthropic.com>
+  ```
+
+- Notes about the implementation
+  ```
+  Notes: Implementation uses atomic operations for thread safety
+  ```
+
+- Tasks that remain to be done
+  ```
+  Tasks: Add tests for edge cases, Improve error handling
+  ```
+
+- References to related issues
+  ```
+  Fixes: #42
+  Related: #24, #36
+  ```
+
+## 4. Use Conventional Commits
+
+Follow the conventional commits format:
+
+```
+<type>(<scope>): <description>
+
+<body>
+
+<trailer>
+```
+
+Where:
+- `type` is one of: feat, fix, docs, style, refactor, test, chore
+- `scope` is the area of the codebase (e.g., python, rust, verification)
+- `description` is a concise description of the change
+- `body` provides additional context
+- `trailer` contains co-author info and other metadata
+
+## 5. Check Language Dependencies
+
+Before implementing in a new language, verify that the language is installed:
+
+```bash
+make check-langs
+```
+
+## Example Workflow
+
+```bash
+# 1. Check current issues
+gh issue list
+
+# 2. Review recent work
+git log --pretty=full -n 5
+
+# 3. Make changes to code...
+
+# 4. Commit with proper format and trailers
+git commit -m "feat(go): add concurrency example
+
+Added example of goroutines in the Go implementation to demonstrate 
+concurrent usage counter increments.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Tasks: Add benchmark tests for concurrent usage
+Notes: Possible race condition at high concurrency"
+```
