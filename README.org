@@ -50,7 +50,11 @@ The focus is on examining how different languages handle scope, environment, and
 * Setup
 
 1. Clone the repository
-2. Create and activate the Python virtual environment:
+2. Install language dependencies (optional):
+   #+begin_src bash
+   make install-deps  # Requires sudo
+   #+end_src
+3. Create and activate the Python virtual environment:
    #+begin_src bash
    uv venv
    source .venv/bin/activate

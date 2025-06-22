@@ -1,0 +1,9 @@
+# Mark files as generated
+README.md linguist-generated=true
+
+# Mark files as documentation
+*.org linguist-documentation=false
+README.org linguist-documentation=false
+
+# Ensure shell scripts use LF line endings
+*.sh text eol=lf

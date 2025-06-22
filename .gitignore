@@ -63,6 +63,9 @@ tramp
 # JSON data files
 *.json
 
+# Generated files
+README.md
+
 # Tools and downloads
 tools/
 docs/references/

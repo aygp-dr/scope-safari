@@ -57,6 +57,7 @@ help:
 	@echo "  make check-langs   # Check language versions"
 	@echo "  make clean         # Clean generated files"
 	@echo "  make help          # Show this help message"
+	@echo "  make install-deps  # Install language dependencies (requires sudo)"
 
 # Tangle code from Org mode file
 .PHONY: tangle
@@ -157,22 +158,22 @@ clean:
 	@echo "Cleaning up..."
 	find $(ROOT_DIR) -name "*.json" -type f -delete
 	find $(ROOT_DIR) -name "*.elc" -type f -delete
+	rm -f README.md
 	@echo "Done!"
 
 # Setup environment
 .PHONY: setup
-setup:
+setup: README.md
 	@echo "Setting up environment..."
 	uv venv
 	uv install
-	@echo "Virtual environment created. Activate with: source .venv/bin/activate"
+	@echo "Environment setup complete. Activate with: source .venv/bin/activate"
 
-# Generate README.md from README.org
-.PHONY: readme
-readme: README.org
-	@echo "Converting README.org to README.md..."
-	$(EMACS) --batch -l org --eval "(progn (find-file \"README.org\") (org-md-export-to-markdown))" 
-	@echo "README.md generated"
+# Generate README.md from README.org (for uv integration)
+README.md: README.org
+	@echo "Converting $< to $@..."
+	$(EMACS) --batch -l org --eval "(progn (find-file \"$<\") (org-md-export-to-markdown))" 
+	@echo "$@ generated"
 
 # Download tools and reference manuals
 .PHONY: download-tools
@@ -214,3 +215,9 @@ verify-contract:
 .PHONY: verify-all
 verify-all: verify-tla verify-contract
 	@echo "All verifications complete"
+
+# Install language dependencies (requires sudo)
+.PHONY: install-deps
+install-deps:
+	@echo "Installing language dependencies (requires sudo)..."
+	sudo ./scripts/install_languages.sh
