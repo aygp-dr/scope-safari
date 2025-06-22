@@ -69,6 +69,18 @@ scope-safari/
 └── README.org           # This file
 #+end_src
 
+* Language Selection
+
+The languages for this project were selected based on several factors:
+
+- Initial focus on Lisp family languages (Elisp, Scheme, Clojure, Hy)
+- High popularity/usage languages from the [[https://www.tiobe.com/tiobe-index/][TIOBE Index]]
+- Languages available in FreeBSD ports (/usr/ports/lang/)
+- Inspiration from [[https://github.com/kanaka/mal][MAL (Make A Lisp)]] project
+- Diverse representation of programming paradigms
+
+Additional language implementations are tracked as GitHub issues, allowing other contributors or AI agents to extend the project while maintaining the consistent test structure.
+
 * Key Insights
 
 From the exploration of scope and environment across different languages:
