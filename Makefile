@@ -6,6 +6,7 @@ EMACS = emacs
 GUILE3 = guile3
 CLOJURE = clojure
 HY = hy
+GST = gst
 
 # Directories
 ROOT_DIR := $(shell pwd)
@@ -14,6 +15,7 @@ PY_DIR := com/example/truthmoji
 EL_DIR := com/example/truthmoji
 SCM_DIR := com/example/truthmoji
 CLJ_DIR := com/example
+ST_DIR := com/example/truthmoji
 
 # Default target
 .PHONY: all
@@ -79,9 +81,15 @@ run-clj:
 	@echo "Running Clojure implementation..."
 	$(CLOJURE) -M -e "(load-file \"$(CLJ_DIR)/truthmoji.clj\")"
 
+# Run Smalltalk implementation
+.PHONY: run-st
+run-st:
+	@echo "Running Smalltalk implementation..."
+	$(GST) $(ST_DIR)/truthmoji.st
+
 # Run all implementations
 .PHONY: run-all
-run-all: run-js run-py run-hy run-el run-scm run-clj
+run-all: run-js run-py run-hy run-el run-scm run-clj run-st
 
 # Check language versions
 .PHONY: check-langs
@@ -93,6 +101,7 @@ check-langs:
 	@echo "Guile: $$($(GUILE3) --version | head -n 1)"
 	@echo "Clojure: $$($(CLOJURE) --version)"
 	@echo "Hy: $$($(HY) --version)"
+	@echo "Smalltalk: $$($(GST) --version | head -n 1)"
 
 # Clean up generated files
 .PHONY: clean
