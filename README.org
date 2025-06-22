@@ -29,6 +29,8 @@ The focus is on examining how different languages handle scope, environment, and
 | Clojure    | 1.12.0.1488  | ✅      | Clojure CLI                   |
 | Hy         | 1.0.0        | ✅      | Lisp syntax for Python        |
 | Smalltalk  | 3.2.5        | ✅      | GNU Smalltalk                 |
+| Go         | 1.21.13      | ✅      | Thread-safe implementation    |
+| Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
 
 * Setup
 
@@ -54,7 +56,9 @@ scope-safari/
 │           ├── truthmoji.hy  # Hy implementation
 │           ├── truthmoji.el  # Elisp implementation
 │           ├── truthmoji.scm # Guile Scheme implementation
-│           └── truthmoji.st  # Smalltalk implementation
+│           ├── truthmoji.st  # Smalltalk implementation
+│           ├── truthmoji.go  # Go implementation
+│           └── truthmoji.rs  # Rust implementation
 ├── .venv/               # Python virtual environment
 ├── scope-safari.el      # Emacs support for the project
 ├── .dir-locals.el       # Emacs directory local variables

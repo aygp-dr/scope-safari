@@ -7,6 +7,8 @@ GUILE3 = guile3
 CLOJURE = clojure
 HY = hy
 GST = gst
+GO = go
+RUSTC = rustc
 
 # Directories
 ROOT_DIR := $(shell pwd)
@@ -16,6 +18,8 @@ EL_DIR := com/example/truthmoji
 SCM_DIR := com/example/truthmoji
 CLJ_DIR := com/example
 ST_DIR := com/example/truthmoji
+GO_DIR := com/example/truthmoji
+RUST_DIR := com/example/truthmoji
 
 # Default target
 .PHONY: all
@@ -87,9 +91,21 @@ run-st:
 	@echo "Running Smalltalk implementation..."
 	$(GST) $(ST_DIR)/truthmoji.st
 
+# Run Go implementation
+.PHONY: run-go
+run-go:
+	@echo "Running Go implementation..."
+	cd $(GO_DIR) && $(GO) run truthmoji.go
+
+# Run Rust implementation
+.PHONY: run-rust
+run-rust:
+	@echo "Running Rust implementation..."
+	cd $(RUST_DIR) && $(RUSTC) truthmoji.rs -o truthmoji_rust && ./truthmoji_rust && rm -f truthmoji_rust
+
 # Run all implementations
 .PHONY: run-all
-run-all: run-js run-py run-hy run-el run-scm run-clj run-st
+run-all: run-js run-py run-hy run-el run-scm run-clj run-st run-go run-rust
 
 # Check language versions
 .PHONY: check-langs
@@ -102,6 +118,8 @@ check-langs:
 	@echo "Clojure: $$($(CLOJURE) --version)"
 	@echo "Hy: $$($(HY) --version)"
 	@echo "Smalltalk: $$($(GST) --version | head -n 1)"
+	@echo "Go: $$($(GO) version)"
+	@echo "Rust: $$($(RUSTC) --version)"
 
 # Clean up generated files
 .PHONY: clean
