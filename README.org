@@ -5,7 +5,7 @@
 #+HTML: <p align="center">
 #+HTML:   <img src="https://img.shields.io/badge/status-development-orange" alt="Status: Development"/>
 #+HTML:   <img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"/>
-#+HTML:   <img src="https://img.shields.io/badge/platform-FreeBSD%2014.2-red" alt="Platform: FreeBSD 14.2"/>
+#+HTML:   <img src="https://img.shields.io/badge/platform-FreeBSD%2014.3-red" alt="Platform: FreeBSD 14.3"/>
 #+HTML: </p>
 
 * Scope Safari: A Cross-Language Environment Exploration
@@ -18,7 +18,7 @@ Each implementation provides a minimal utility that converts boolean values to e
 
 The focus is on examining how different languages handle scope, environment, and module systems.
 
-* Tested Languages Matrix (FreeBSD 14.2-RELEASE)
+* Tested Languages Matrix (FreeBSD 14.3-RELEASE)
 
 | Language   | Version      | Status  | Notes                         |
 |------------+--------------+---------+-------------------------------|
@@ -31,7 +31,7 @@ The focus is on examining how different languages handle scope, environment, and
 | Smalltalk  | 3.2.5        | ✅      | GNU Smalltalk                 |
 | Go         | 1.21.13      | ✅      | Thread-safe implementation    |
 | Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
-| C          | GCC 13.3.0   | ✅      | Using atomic variables        |
+| C          | Clang 19.1.7 | ✅      | Using atomic variables        |
 | Zig        | 0.13.0       | ✅      | Memory-safe systems language  |
 | Haskell    | 9.4.8        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/1][Issue #1]], [[https://github.com/aygp-dr/scope-safari/issues/17][#17]] (High)         |
 | Elixir     | 1.16.1       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/2][Issue #2]] (Medium)         |

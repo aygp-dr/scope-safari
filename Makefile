@@ -156,9 +156,9 @@ check-langs:
 .PHONY: clean
 clean:
 	@echo "Cleaning up..."
-	find $(ROOT_DIR) -name "*.json" -type f -delete
-	find $(ROOT_DIR) -name "*.elc" -type f -delete
 	rm -f README.md
+	rm -f com/example/truthmoji/*.json
+	rm -f com/example/truthmoji/*.elc
 	@echo "Done!"
 
 # Setup environment
