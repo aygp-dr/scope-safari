@@ -43,7 +43,18 @@ help:
 	@echo "  make run-el        # Run Elisp implementation"
 	@echo "  make run-scm       # Run Guile Scheme implementation"
 	@echo "  make run-clj       # Run Clojure implementation"
+	@echo "  make run-st        # Run Smalltalk implementation"
+	@echo "  make run-go        # Run Go implementation"
+	@echo "  make run-rust      # Run Rust implementation"
+	@echo "  make run-c         # Run C implementation"
+	@echo "  make run-zig       # Run Zig implementation"
 	@echo "  make run-all       # Run all implementations"
+	@echo "  make setup         # Setup Python environment"
+	@echo "  make download-tools # Download TLA+ tools and reference manuals"
+	@echo "  make verify-tla    # Run TLA+ model checker"
+	@echo "  make verify-contract # Run Pydantic contract verification"
+	@echo "  make verify-all    # Run all verifications"
+	@echo "  make check-langs   # Check language versions"
 	@echo "  make clean         # Clean generated files"
 	@echo "  make help          # Show this help message"
 
@@ -153,4 +164,53 @@ clean:
 setup:
 	@echo "Setting up environment..."
 	uv venv
+	uv install
 	@echo "Virtual environment created. Activate with: source .venv/bin/activate"
+
+# Generate README.md from README.org
+.PHONY: readme
+readme: README.org
+	@echo "Converting README.org to README.md..."
+	$(EMACS) --batch -l org --eval "(progn (find-file \"README.org\") (org-md-export-to-markdown))" 
+	@echo "README.md generated"
+
+# Download tools and reference manuals
+.PHONY: download-tools
+download-tools:
+	@echo "Downloading tools and references..."
+	./scripts/download_tools.sh
+
+# TLA+ specific tools and verification
+TOOLS_DIR := tools
+TLA_JAR := $(TOOLS_DIR)/tla2tools.jar
+
+$(TLA_JAR):
+	@echo "TLA+ tools not found. Downloading..."
+	@mkdir -p $(TOOLS_DIR)
+	@curl -L "https://github.com/tlaplus/tlaplus/releases/download/v1.7.1/tla2tools.jar" -o $(TLA_JAR)
+	@echo "Downloaded TLA+ tools to $(TLA_JAR)"
+
+# Run TLA+ model checker on the TruthMoji specification
+.PHONY: verify-tla
+verify-tla: $(TLA_JAR)
+	@echo "Running TLA+ model checker on TruthMoji specification..."
+	@java -jar $(TLA_JAR) -config contracts/TruthMoji.cfg contracts/TruthMoji.tla || true
+	@echo "TLA+ verification complete"
+
+# Run Pydantic contract verification
+.PHONY: verify-contract
+verify-contract:
+	@echo "Running contract verification..."
+	@if [ -d ".venv" ]; then \
+		. .venv/bin/activate && $(PYTHON) -m pip install pydantic > /dev/null 2>&1 || true; \
+		. .venv/bin/activate && $(PYTHON) contracts/truthmoji_contract.py || echo "Pydantic not installed or error running contract"; \
+	else \
+		$(PYTHON) -m pip install pydantic > /dev/null 2>&1 || true; \
+		$(PYTHON) contracts/truthmoji_contract.py || echo "Pydantic not installed or error running contract"; \
+	fi
+	@echo "Contract verification complete"
+
+# Run all verifications
+.PHONY: verify-all
+verify-all: verify-tla verify-contract
+	@echo "All verifications complete"

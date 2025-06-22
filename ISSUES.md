@@ -1,71 +1,33 @@
-# Future Work Issues
+# Scope Safari Project Issues
 
-Here are suggested GitHub issues for future enhancements to the Scope Safari project:
+## Implementation Issues
 
-## Additional Language Implementations
+1. **Implement Haskell Version** - Add Haskell implementation with type system showcase
+2. **Implement Elixir Version** - Add Elixir implementation with pattern matching
+3. **Implement OCaml Version** - Add OCaml implementation
+4. **Implement Kotlin Version** - Add Kotlin implementation
+5. **Implement Crystal Version** - Add Crystal implementation
+6. **Implement Julia Version** - Add Julia implementation
+7. **Implement V Language Version** - Add V language implementation
+8. **Implement Nim Version** - Add Nim implementation with metaprogramming
 
-1. **Add Haskell Implementation**
-   - Implement TruthMoji in Haskell
-   - Demonstrate Haskell's closure and module system
-   - Add to Makefile and testing matrix
+## Testing & Documentation
 
-2. **Add Elixir Implementation**
-   - Implement TruthMoji in Elixir
-   - Demonstrate Elixir's process isolation and module system
-   - Add to Makefile and testing matrix
+9. **Add Unit Tests for All Implementations** - Create comprehensive test suite for all language implementations
+10. **Enhance Documentation** - Add more detailed documentation explaining each language's approach to scope and environment
 
-3. **Add Rust Implementation**
-   - Implement TruthMoji in Rust
-   - Demonstrate Rust's ownership model and module system
-   - Add to Makefile and testing matrix
+## Infrastructure & Build System
 
-4. **Add OCaml Implementation**
-   - Implement TruthMoji in OCaml
-   - Demonstrate OCaml's module system and functors
-   - Add to Makefile and testing matrix
+11. **Docker Development Environment** - Create Docker containers for consistent development across platforms
+12. **CI/CD Pipeline** - Set up GitHub Actions for continuous integration
+13. **Web UI Demo** - Create a simple web UI to demonstrate all implementations
 
-5. **Add Go Implementation**
-   - Implement TruthMoji in Go
-   - Demonstrate Go's package system and closures
-   - Add to Makefile and testing matrix
+## Language Concepts
 
-## Testing and Documentation
+14. **Add Currying Examples** - Showcase currying across languages that support it
+15. **Module System Comparison** - Compare module systems across languages
 
-6. **Add Unit Tests for All Implementations**
-   - Create consistent testing across all languages
-   - Test core functionality and edge cases
-   - Update Makefile with test targets
+## Verification & Specification
 
-7. **Create Comprehensive Documentation**
-   - Add detailed documentation for each language implementation
-   - Add comparison matrix of scope and environment features
-   - Include setup instructions for each language
-
-## Infrastructure and Tooling
-
-8. **Create Docker Containers for Development**
-   - Create containerized development environment
-   - Ensure all language implementations work consistently
-   - Add Docker Compose configuration
-
-9. **Add CI/CD Pipeline**
-   - Add GitHub Actions for testing
-   - Add release automation
-   - Add package publishing for each language
-
-10. **Create Web UI Demo**
-    - Create web interface to compare implementations
-    - Allow interactive testing of each implementation
-    - Visualize environment and scope changes
-
-## Advanced Features
-
-11. **Add Currying Examples**
-    - Implement currying across languages
-    - Compare partial application techniques
-    - Add performance benchmarks
-
-12. **Add Module System Comparison**
-    - Expand module system exploration
-    - Compare importing and exporting mechanisms
-    - Demonstrate namespace conflicts and resolutions
+16. **Test Verification Targets** - Test and fix the TLA+ and Pydantic contract verification targets
+17. **Complete Formal Verification Framework** - Finish implementing the formal verification framework for all languages

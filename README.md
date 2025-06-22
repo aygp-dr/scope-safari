@@ -1,27 +1,28 @@
-#+TITLE: Scope Safari
-#+AUTHOR: Environment Explorer
-#+DATE: 2025-06-22
+# Scope Safari: A Cross-Language Environment Exploration
 
-#+HTML: <p align="center">
-#+HTML:   <img src="https://img.shields.io/badge/status-development-orange" alt="Status: Development"/>
-#+HTML:   <img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"/>
-#+HTML:   <img src="https://img.shields.io/badge/platform-FreeBSD%2014.2-red" alt="Platform: FreeBSD 14.2"/>
-#+HTML: </p>
+<p align="center">
+  <img src="https://img.shields.io/badge/status-development-orange" alt="Status: Development"/>
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"/>
+  <img src="https://img.shields.io/badge/platform-FreeBSD%2014.2-red" alt="Platform: FreeBSD 14.2"/>
+</p>
 
-* Scope Safari: A Cross-Language Environment Exploration
+## About
 
-This project explores scope, environment, and closures across different programming languages.
+Scope Safari is a multi-language programming project that explores how different programming languages implement scope, environment, and closures. Each implementation provides the same simple functionality: converting boolean values to emoji (true → 😊, false → 😔) while tracking usage count.
 
-Each implementation provides a minimal utility that converts boolean values to emoji:
-- ~true~ → "😊"
-- ~false~ → "😔"
+By implementing this same functionality across multiple language paradigms, we can compare:
 
-The focus is on examining how different languages handle scope, environment, and module systems.
+- Lexical vs dynamic scoping rules
+- Different approaches to state management
+- Closure implementations and variable capture
+- Module systems and namespaces
+- Thread safety mechanisms
+- Data encapsulation patterns
 
-* Tested Languages Matrix (FreeBSD 14.2-RELEASE)
+## Tested Languages Matrix (FreeBSD 14.2-RELEASE)
 
 | Language   | Version      | Status  | Notes                         |
-|------------+--------------+---------+-------------------------------|
+|------------|--------------|---------|-------------------------------|
 | Python     | 3.11.11      | ✅      | Using uv for venv management  |
 | JavaScript | Node 22.14.0 | ✅      | npm 10.9.2                    |
 | Elisp      | Emacs 30.1   | ✅      | GNU Emacs                     |
@@ -33,29 +34,31 @@ The focus is on examining how different languages handle scope, environment, and
 | Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
 | C          | GCC 13.3.0   | ✅      | Using atomic variables        |
 | Zig        | 0.13.0       | ✅      | Memory-safe systems language  |
-| Haskell    | 9.4.8        | TODO    | Issue #1, #17                 |
+| Haskell    | 9.4.8        | TODO    | Issue #1                      |
 | Elixir     | 1.16.1       | TODO    | Issue #2                      |
 | OCaml      | 4.14.0       | TODO    | Issue #4                      |
 | Kotlin     | 1.9.20       | TODO    | Issue #14                     |
 | Crystal    | 1.9.2        | TODO    | Issue #19                     |
 | Julia      | 1.10.0       | TODO    | Issue #18                     |
 | V          | 0.4.0        | TODO    | Issue #20                     |
-| Nim        | 1.6.14       | TODO    | Not yet in issues             |
+| Nim        | 1.6.14       | TODO    | Planned implementation        |
 
-* Setup
+## Setup
 
 1. Clone the repository
 2. Create and activate the Python virtual environment:
-   #+begin_src bash
+   ```bash
    uv venv
    source .venv/bin/activate
-   #+end_src
+   ```
+3. Install dependencies:
+   ```bash
+   uv install
+   ```
 
-* Project Structure
+## Project Structure
 
-The project follows a simple structure for each language implementation:
-
-#+begin_src
+```
 scope-safari/
 ├── com/
 │   └── example/
@@ -79,41 +82,39 @@ scope-safari/
 │   └── truthmoji_contract.py # Pydantic contract
 ├── scripts/             # Utility scripts
 │   └── download_tools.sh # Downloads TLA+ tools and reference manuals
-├── tools/               # TLA+ and verification tools (created by download_tools.sh)
+├── tools/               # TLA+ and verification tools
 ├── docs/                # Documentation and reference manuals
-│   └── references/      # Language reference manuals (created by download_tools.sh)
 ├── .venv/               # Python virtual environment
 ├── scope-safari.el      # Emacs support for the project
-├── .dir-locals.el       # Emacs directory local variables
-└── README.org           # This file
-#+end_src
+└── .dir-locals.el       # Emacs directory local variables
+```
 
-* Language Selection
+## Language Selection Criteria
 
 The languages for this project were selected based on several factors:
 
 - Initial focus on Lisp family languages (Elisp, Scheme, Clojure, Hy)
-- High popularity/usage languages from the [[https://www.tiobe.com/tiobe-index/][TIOBE Index]]
+- High popularity/usage languages from the [TIOBE Index](https://www.tiobe.com/tiobe-index/)
 - Languages available in FreeBSD ports (/usr/ports/lang/)
-- Inspiration from [[https://github.com/kanaka/mal][MAL (Make A Lisp)]] project
+- Inspiration from [MAL (Make A Lisp)](https://github.com/kanaka/mal) project
 - Diverse representation of programming paradigms
 
-Additional language implementations are tracked as GitHub issues, allowing other contributors or AI agents to extend the project while maintaining the consistent test structure.
+Additional language implementations are tracked as GitHub issues, allowing other contributors to extend the project while maintaining the consistent test structure.
 
-* Key Insights
+## Key Insights
 
 From the exploration of scope and environment across different languages:
 
 1. *Lexical vs Dynamic*: All modern implementations use lexical scope by default
-2. *Privacy*: Ranges from convention (Python ~_~) to enforced (JS closures)
+2. *Privacy*: Ranges from convention (Python `_`) to enforced (JS closures)
 3. *Introspection*: Lisp-family languages generally offer more runtime inspection
 4. *State Management*: Closures remain the universal pattern for encapsulation
 
-* Usage
+## Usage
 
-Each language implementation can be run independently. Use the Makefile targets for running implementations:
+Each language implementation can be run independently using the Makefile targets:
 
-#+begin_src bash
+```bash
 # Run a specific language implementation
 make run-js      # JavaScript
 make run-py      # Python
@@ -129,11 +130,9 @@ make run-zig     # Zig
 
 # Run all implementations
 make run-all
-#+end_src
+```
 
-See SS.org for details on each implementation.
-
-* Formal Verification
+## Formal Verification
 
 This project includes formal specifications of the TruthMoji behavior using:
 
@@ -144,28 +143,32 @@ This project includes formal specifications of the TruthMoji behavior using:
 
 To download TLA+ tools and language reference manuals:
 
-#+begin_src bash
+```bash
 make download-tools
-#+end_src
+```
 
 To run the TLA+ model checker against the specification:
 
-#+begin_src bash
+```bash
 make verify-tla
-#+end_src
+```
 
 To verify against the Pydantic contract:
 
-#+begin_src bash
+```bash
 make verify-contract
-#+end_src
+```
 
 To run all verification tools:
 
-#+begin_src bash
+```bash
 make verify-all
-#+end_src
+```
 
-* License
+## Contributing
+
+Contributions are welcome! Please check the ISSUES.md file for planned language implementations and features.
+
+## License
 
 MIT
