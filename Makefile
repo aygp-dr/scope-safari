@@ -9,6 +9,8 @@ HY = hy
 GST = gst
 GO = go
 RUSTC = rustc
+CC = gcc
+CFLAGS = -std=c11
 
 # Directories
 ROOT_DIR := $(shell pwd)
@@ -20,6 +22,7 @@ CLJ_DIR := com/example
 ST_DIR := com/example/truthmoji
 GO_DIR := com/example/truthmoji
 RUST_DIR := com/example/truthmoji
+C_DIR := com/example/truthmoji
 
 # Default target
 .PHONY: all
@@ -103,9 +106,15 @@ run-rust:
 	@echo "Running Rust implementation..."
 	cd $(RUST_DIR) && $(RUSTC) truthmoji.rs -o truthmoji_rust && ./truthmoji_rust && rm -f truthmoji_rust
 
+# Run C implementation
+.PHONY: run-c
+run-c:
+	@echo "Running C implementation..."
+	cd $(C_DIR) && $(CC) $(CFLAGS) truthmoji.c -o truthmoji_c && ./truthmoji_c && rm -f truthmoji_c
+
 # Run all implementations
 .PHONY: run-all
-run-all: run-js run-py run-hy run-el run-scm run-clj run-st run-go run-rust
+run-all: run-js run-py run-hy run-el run-scm run-clj run-st run-go run-rust run-c
 
 # Check language versions
 .PHONY: check-langs
@@ -120,6 +129,7 @@ check-langs:
 	@echo "Smalltalk: $$($(GST) --version | head -n 1)"
 	@echo "Go: $$($(GO) version)"
 	@echo "Rust: $$($(RUSTC) --version)"
+	@echo "C: $$($(CC) --version | head -n 1)"
 
 # Clean up generated files
 .PHONY: clean

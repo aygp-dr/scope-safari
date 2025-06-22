@@ -31,6 +31,7 @@ The focus is on examining how different languages handle scope, environment, and
 | Smalltalk  | 3.2.5        | ✅      | GNU Smalltalk                 |
 | Go         | 1.21.13      | ✅      | Thread-safe implementation    |
 | Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
+| C          | GCC 13.3.0   | ✅      | Using atomic variables        |
 
 * Setup
 
@@ -58,7 +59,8 @@ scope-safari/
 │           ├── truthmoji.scm # Guile Scheme implementation
 │           ├── truthmoji.st  # Smalltalk implementation
 │           ├── truthmoji.go  # Go implementation
-│           └── truthmoji.rs  # Rust implementation
+│           ├── truthmoji.rs  # Rust implementation
+│           └── truthmoji.c   # C implementation
 ├── .venv/               # Python virtual environment
 ├── scope-safari.el      # Emacs support for the project
 ├── .dir-locals.el       # Emacs directory local variables
