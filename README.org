@@ -33,14 +33,16 @@ The focus is on examining how different languages handle scope, environment, and
 | Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
 | C          | GCC 13.3.0   | ✅      | Using atomic variables        |
 | Zig        | 0.13.0       | ✅      | Memory-safe systems language  |
-| Haskell    | 9.4.8        | TODO    | Issue #1, #17                 |
-| Elixir     | 1.16.1       | TODO    | Issue #2                      |
-| OCaml      | 4.14.0       | TODO    | Issue #4                      |
-| Kotlin     | 1.9.20       | TODO    | Issue #14                     |
-| Crystal    | 1.9.2        | TODO    | Issue #19                     |
-| Julia      | 1.10.0       | TODO    | Issue #18                     |
-| V          | 0.4.0        | TODO    | Issue #20                     |
-| Nim        | 1.6.14       | TODO    | Not yet in issues             |
+| Haskell    | 9.4.8        | ⬜      | Issue #1, #17                 |
+| Elixir     | 1.16.1       | ⬜      | Issue #2                      |
+| OCaml      | 4.14.0       | ⬜      | Issue #4                      |
+| Kotlin     | 1.9.20       | ⬜      | Issue #14                     |
+| Crystal    | 1.9.2        | ⬜      | Issue #19                     |
+| Julia      | 1.10.0       | ⬜      | Issue #18                     |
+| V          | 0.4.0        | ⬜      | Issue #20                     |
+| Nim        | 1.6.14       | ⬜      | Issue #23                     |
+| Racket     | 8.11.1       | ⬜      | Issue #24                     |
+| Ruby       | 3.2.7        | ⬜      | Issue #25                     |
 
 * Setup
 
