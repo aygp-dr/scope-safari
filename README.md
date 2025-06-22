@@ -42,6 +42,9 @@ The focus is on examining how different languages handle scope, environment, and
 | Nim        | 1.6.14       | ⬜      | Issue #23                     |
 | Racket     | 8.11.1       | ⬜      | Issue #24                     |
 | Ruby       | 3.2.7        | ⬜      | Issue #25                     |
+| Perl       | 5.36.3       | ⬜      | Issue #26                     |
+| Tcl        | 8.6.15       | ⬜      | Issue #27                     |
+| Lua        | 5.4.7        | ⬜      | Issue #28                     |
 
 
 ## Setup
