@@ -33,19 +33,19 @@ The focus is on examining how different languages handle scope, environment, and
 | Rust       | 1.85.0       | ✅      | Using AtomicUsize for safety  |
 | C          | GCC 13.3.0   | ✅      | Using atomic variables        |
 | Zig        | 0.13.0       | ✅      | Memory-safe systems language  |
-| Haskell    | 9.4.8        | ⬜      | Issue #1, #17                 |
-| Elixir     | 1.16.1       | ⬜      | Issue #2                      |
-| OCaml      | 4.14.0       | ⬜      | Issue #4                      |
-| Kotlin     | 1.9.20       | ⬜      | Issue #14                     |
-| Crystal    | 1.9.2        | ⬜      | Issue #19                     |
-| Julia      | 1.10.0       | ⬜      | Issue #18                     |
-| V          | 0.4.0        | ⬜      | Issue #20                     |
-| Nim        | 1.6.14       | ⬜      | Issue #23                     |
-| Racket     | 8.11.1       | ⬜      | Issue #24                     |
-| Ruby       | 3.2.7        | ⬜      | Issue #25                     |
-| Perl       | 5.36.3       | ⬜      | Issue #26                     |
-| Tcl        | 8.6.15       | ⬜      | Issue #27                     |
-| Lua        | 5.4.7        | ⬜      | Issue #28                     |
+| Haskell    | 9.4.8        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/1][Issue #1]], [[https://github.com/aygp-dr/scope-safari/issues/17][#17]] (High)         |
+| Elixir     | 1.16.1       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/2][Issue #2]] (Medium)         |
+| OCaml      | 4.14.0       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/4][Issue #4]] (High)           |
+| Kotlin     | 1.9.20       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/14][Issue #14]] (Low)           |
+| Crystal    | 1.9.2        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/19][Issue #19]] (Low)           |
+| Julia      | 1.10.0       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/18][Issue #18]] (Low)           |
+| V          | 0.4.0        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/20][Issue #20]] (Low)           |
+| Nim        | 1.6.14       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/23][Issue #23]] (Medium)         |
+| Racket     | 8.11.1       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/24][Issue #24]] (Medium)         |
+| Ruby       | 3.2.7        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/25][Issue #25]] (Low)           |
+| Perl       | 5.36.3       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/26][Issue #26]] (Low)           |
+| Tcl        | 8.6.15       | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/27][Issue #27]] (Low)           |
+| Lua        | 5.4.7        | ⬜      | [[https://github.com/aygp-dr/scope-safari/issues/28][Issue #28]] (Medium)         |
 
 * Setup
 
@@ -103,7 +103,7 @@ The languages for this project were selected based on several factors:
 - Inspiration from [[https://github.com/kanaka/mal][MAL (Make A Lisp)]] project
 - Diverse representation of programming paradigms
 
-Additional language implementations are tracked as GitHub issues, allowing other contributors or AI agents to extend the project while maintaining the consistent test structure.
+Additional language implementations are tracked as GitHub issues, allowing other contributors or AI agents to extend the project while maintaining the consistent test structure. Implementation priorities (High, Medium, Low) reflect the importance of each language to the core goals of the project.
 
 * Key Insights
 
