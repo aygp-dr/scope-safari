@@ -81,3 +81,6 @@ docs/references/
 
 # FreeBSD
 .goutputstream*
+
+# Research directory (for cloned repos)
+research/

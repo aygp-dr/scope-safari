@@ -36,7 +36,9 @@ help:
 	@echo "Scope Safari - Cross-Language Environment Exploration"
 	@echo ""
 	@echo "Usage:"
-	@echo "  make tangle        # Extract code blocks from SS.org"
+	@echo "  make tangle        # Extract code blocks from README.org"
+	@echo "  make tangle-file FILE=<file.org>  # Extract code blocks from specific org file"
+	@echo "  make tangle-all    # Extract code blocks from all org files"
 	@echo "  make run-js        # Run JavaScript implementation"
 	@echo "  make run-py        # Run Python implementation"
 	@echo "  make run-hy        # Run Hy implementation"
@@ -58,13 +60,47 @@ help:
 	@echo "  make clean         # Clean generated files"
 	@echo "  make help          # Show this help message"
 	@echo "  make install-deps  # Install language dependencies (requires sudo)"
+	@echo ""
+	@echo "Research targets:"
+	@echo "  make research/guile     # Clone Guile repository"
+	@echo "  make research/clojure   # Clone Clojure repository"
+	@echo "  make research/python    # Clone Python repository"
+	@echo "  make research/nodejs    # Clone Node.js repository"
+	@echo "  make research/emacs     # Clone Emacs repository"
+	@echo "  make research/hy        # Clone Hy repository"
+	@echo "  make research/go        # Clone Go repository"
+	@echo "  make research/smalltalk # Clone GNU Smalltalk repository"
+	@echo "  make research/rust      # Clone Rust repository"
+	@echo "  make research/zig       # Clone Zig repository"
+	@echo "  make research-all       # Clone all research repositories"
+	@echo "  make clean-research     # Remove all research repositories"
 
 # Tangle code from Org mode file
 .PHONY: tangle
 tangle:
-	@echo "Tangling code blocks from SS.org..."
-	$(EMACS) --batch -l org --eval "(org-babel-tangle-file \"SS.org\")"
+	@echo "Tangling code blocks from README.org..."
+	$(EMACS) --batch -l org --eval "(org-babel-tangle-file \"README.org\")"
 	@echo "Done!"
+
+# Tangle from specific org file
+.PHONY: tangle-file
+tangle-file:
+	@if [ -z "$(FILE)" ]; then \
+		echo "Usage: make tangle-file FILE=yourfile.org"; \
+		exit 1; \
+	fi
+	@echo "Tangling code blocks from $(FILE)..."
+	$(EMACS) --batch -l org --eval "(org-babel-tangle-file \"$(FILE)\")"
+	@echo "Done!"
+
+# Tangle all org files
+.PHONY: tangle-all
+tangle-all:
+	@for file in *.org; do \
+		echo "Tangling code blocks from $$file..."; \
+		$(EMACS) --batch -l org --eval "(org-babel-tangle-file \"$$file\")"; \
+	done
+	@echo "All org files tangled!"
 
 # Run JavaScript implementation
 .PHONY: run-js
@@ -221,3 +257,112 @@ verify-all: verify-tla verify-contract
 install-deps:
 	@echo "Installing language dependencies (requires sudo)..."
 	sudo ./scripts/install_languages.sh
+
+# Research repository cloning targets
+RESEARCH_DIR := research
+
+.PHONY: research-dir
+research-dir:
+	@mkdir -p $(RESEARCH_DIR)
+
+.PHONY: research/guile
+research/guile: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/guile" ]; then \
+		echo "Cloning Guile repository..."; \
+		git clone https://git.savannah.gnu.org/git/guile.git $(RESEARCH_DIR)/guile; \
+	else \
+		echo "Guile repository already exists"; \
+	fi
+
+.PHONY: research/clojure
+research/clojure: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/clojure" ]; then \
+		echo "Cloning Clojure repository..."; \
+		git clone https://github.com/clojure/clojure.git $(RESEARCH_DIR)/clojure; \
+	else \
+		echo "Clojure repository already exists"; \
+	fi
+
+.PHONY: research/python
+research/python: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/cpython" ]; then \
+		echo "Cloning Python repository..."; \
+		git clone https://github.com/python/cpython.git $(RESEARCH_DIR)/cpython; \
+	else \
+		echo "Python repository already exists"; \
+	fi
+
+.PHONY: research/nodejs
+research/nodejs: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/node" ]; then \
+		echo "Cloning Node.js repository..."; \
+		git clone https://github.com/nodejs/node.git $(RESEARCH_DIR)/node; \
+	else \
+		echo "Node.js repository already exists"; \
+	fi
+
+.PHONY: research/emacs
+research/emacs: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/emacs" ]; then \
+		echo "Cloning Emacs repository..."; \
+		git clone https://github.com/emacs-mirror/emacs.git $(RESEARCH_DIR)/emacs; \
+	else \
+		echo "Emacs repository already exists"; \
+	fi
+
+.PHONY: research/hy
+research/hy: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/hy" ]; then \
+		echo "Cloning Hy repository..."; \
+		git clone https://github.com/hylang/hy.git $(RESEARCH_DIR)/hy; \
+	else \
+		echo "Hy repository already exists"; \
+	fi
+
+.PHONY: research/go
+research/go: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/go" ]; then \
+		echo "Cloning Go repository..."; \
+		git clone https://github.com/golang/go.git $(RESEARCH_DIR)/go; \
+	else \
+		echo "Go repository already exists"; \
+	fi
+
+.PHONY: research/smalltalk
+research/smalltalk: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/smalltalk" ]; then \
+		echo "Cloning GNU Smalltalk repository..."; \
+		git clone https://git.savannah.gnu.org/git/smalltalk.git $(RESEARCH_DIR)/smalltalk; \
+	else \
+		echo "GNU Smalltalk repository already exists"; \
+	fi
+
+.PHONY: research/rust
+research/rust: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/rust" ]; then \
+		echo "Cloning Rust repository..."; \
+		git clone https://github.com/rust-lang/rust.git $(RESEARCH_DIR)/rust; \
+	else \
+		echo "Rust repository already exists"; \
+	fi
+
+.PHONY: research/zig
+research/zig: research-dir
+	@if [ ! -d "$(RESEARCH_DIR)/zig" ]; then \
+		echo "Cloning Zig repository..."; \
+		git clone https://github.com/ziglang/zig.git $(RESEARCH_DIR)/zig; \
+	else \
+		echo "Zig repository already exists"; \
+	fi
+
+# Clone all research repositories
+.PHONY: research-all
+research-all: research/guile research/clojure research/python research/nodejs research/emacs research/hy research/go research/smalltalk research/rust research/zig
+	@echo "All research repositories cloned"
+
+# Clean research directory
+.PHONY: clean-research
+clean-research:
+	@echo "Cleaning research directory..."
+	rm -rf $(RESEARCH_DIR)
+	@echo "Research directory cleaned"
