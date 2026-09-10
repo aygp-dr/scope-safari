@@ -45,6 +45,11 @@ pom.xml.asc
 .nrepl-port
 .hgignore
 .hg/
+.cpcache/
+.clj-kondo/.cache/
+.lsp/
+.rebel_readline_history
+target/
 
 # Emacs
 *~
