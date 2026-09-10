@@ -8,7 +8,7 @@
 (def ^:private usage-count (atom 0))
 
 ;; Public API
-(defn emojify 
+(defn emojify
   "Convert boolean to emoji"
   [bool]
   (swap! usage-count inc)
