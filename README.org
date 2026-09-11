@@ -142,6 +142,25 @@ make run-all
 
 See SS.org for details on each implementation.
 
+** Clojure development
+
+The Clojure implementation, =com/example/truthmoji.clj=, is a small Clojure
+project that follows the aygp-dr Clojure standard. =deps.edn= puts the repo
+root on the classpath, so the file stays where =make run-clj= loads it.
+
+| Task                    | What it does                     |
+|-------------------------+----------------------------------|
+| =bb test=               | test suite (=clojure -M:test=)   |
+| =bb lint=               | clj-kondo (fails on errors)      |
+| =bb fmt= / =bb fmt:fix= | cljfmt check / fix               |
+| =bb check=              | lint + fmt + test (CI runs this) |
+
+=emojify=, =get-usage= and =demo= each have an =s/fdef= right after their
+=defn= (see the [[https://clojure.org/guides/spec][clojure.spec guide]]), and
+the data specs live in =com/example/truthmoji/specs.clj=.
+=test/com/example/truthmoji/specs_test.clj= runs =stest/check= on =emojify=
+and =get-usage=. The unit tests run with instrumentation on.
+
 * Formal Verification
 
 This project includes formal specifications of the TruthMoji behavior using:
